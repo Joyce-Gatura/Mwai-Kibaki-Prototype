@@ -1,0 +1,290 @@
+
+
+
+
+<div id="adult-form" class="age-form" hidden>
+    <form asp-action="SubmitTriage" asp-controller="Triage" method="post">
+
+        <h3>Patient Type</h3>
+        <select name="PatientType">
+            <option value="">-- Select patient type --</option>
+            <option value="New Patient">New patient</option>
+            <option value="Return Patient">Return patient</option>
+        </select>
+
+        <h2>Patient Vital Signs</h2>
+        <div class="patient-vital-signs">
+
+            <label>Blood Pressure <span class="hint">(mmHg, e.g. 120/80)</span>
+            <input type="text" name="BloodPressure" placeholder="e.g. 120/80" /></label>
+
+            <label>Temperature <span class="hint">(°C)</span>
+            <input type="number" name="Temperature" step="0.1" min="25" max="45" placeholder="e.g. 37.0" /></label>
+
+            <label>Pulse Rate <span class="hint">(beats/min)</span>
+            <input type="number" name="PulseRate" min="0" max="300" placeholder="e.g. 80" /></label>
+
+            <label>Respiratory Rate <span class="hint">(breaths/min)</span>
+            <input type="number" name="RespiratoryRate" min="0" max="60" placeholder="e.g. 16" /></label>
+
+            <label>SPO2 <span class="hint">(%)</span>
+            <input type="number" name="SPO2" step="0.1" min="0" max="100" placeholder="e.g. 98.5" /></label>
+
+            <label>Weight <span class="hint">(kg)</span>
+            <input type="number" name="Weight" step="0.1" min="0" placeholder="e.g. 70.5" /></label>
+
+            <label>Height <span class="hint">(cm)</span>
+            <input type="number" name="Height" step="0.1" min="0" placeholder="e.g. 170.0" /></label>
+
+            <label>RBS <span class="hint">(mmol/L)</span>
+            <input type="number" name="RBS" step="0.1" min="0" placeholder="e.g. 5.5" /></label>
+
+            <label>Any Disability?
+            <input type="text" name="AnyDisability" placeholder="Describe disability or type 'None'" /></label>
+
+        </div>
+
+        <div class="pain-rating-scale">
+            @* <h3>Pain Rating Scale</h3> *@
+
+            <div class="form-section">
+                <div class="section-title">Faces Pain Rating Scale (0–10) — click to select</div>
+                <div class="faces-scale" id="adultFacesScale">
+
+                    <button type="button" class="face-btn" data-value="0" title="0 - No Pain">
+                        <svg viewBox="0 0 100 100" class="face-svg">
+                            <circle cx="50" cy="50" r="45" class="face-outline" />
+                            <circle cx="35" cy="40" r="4" class="eye" />
+                            <circle cx="65" cy="40" r="4" class="eye" />
+                            <path d="M 30 65 Q 50 75 70 65" class="mouth" />
+                        </svg>
+                        <span class="face-label">0</span>
+                    </button>
+
+                    <button type="button" class="face-btn" data-value="2" title="2 - Minimal Pain">
+                        <svg viewBox="0 0 100 100" class="face-svg">
+                            <circle cx="50" cy="50" r="45" class="face-outline" />
+                            <circle cx="35" cy="40" r="4" class="eye" />
+                            <circle cx="65" cy="40" r="4" class="eye" />
+                            <path d="M 32 65 Q 50 72 68 65" class="mouth" />
+                        </svg>
+                        <span class="face-label">2</span>
+                    </button>
+
+                    <button type="button" class="face-btn" data-value="4" title="4 - Mild Pain">
+                        <svg viewBox="0 0 100 100" class="face-svg">
+                            <circle cx="50" cy="50" r="45" class="face-outline" />
+                            <path d="M 28 32 Q 35 28 40 32" class="brow" />
+                            <path d="M 60 32 Q 65 28 72 32" class="brow" />
+                            <circle cx="35" cy="40" r="3.5" class="eye" />
+                            <circle cx="65" cy="40" r="3.5" class="eye" />
+                            <path d="M 35 65 Q 50 58 65 65" class="mouth" />
+                        </svg>
+                        <span class="face-label">4</span>
+                    </button>
+
+                    <button type="button" class="face-btn" data-value="6" title="6 - Moderate Pain">
+                        <svg viewBox="0 0 100 100" class="face-svg">
+                            <circle cx="50" cy="50" r="45" class="face-outline" />
+                            <path d="M 28 30 Q 35 25 40 30" class="brow" />
+                            <path d="M 60 30 Q 65 25 72 30" class="brow" />
+                            <circle cx="35" cy="40" r="3.5" class="eye" />
+                            <circle cx="65" cy="40" r="3.5" class="eye" />
+                            <path d="M 38 68 Q 50 54 62 68" class="mouth" />
+                        </svg>
+                        <span class="face-label">6</span>
+                    </button>
+
+                    <button type="button" class="face-btn" data-value="8" title="8 - Severe Pain">
+                        <svg viewBox="0 0 100 100" class="face-svg">
+                            <circle cx="50" cy="50" r="45" class="face-outline" />
+                            <path d="M 26 28 Q 35 20 42 28" class="brow" />
+                            <path d="M 58 28 Q 65 20 74 28" class="brow" />
+                            <circle cx="35" cy="40" r="4" class="eye" />
+                            <circle cx="65" cy="40" r="4" class="eye" />
+                            <circle cx="33" cy="50" r="2" class="tear" />
+                            <circle cx="67" cy="50" r="2" class="tear" />
+                            <path d="M 42 72 Q 50 60 58 72" class="mouth" />
+                        </svg>
+                        <span class="face-label">8</span>
+                    </button>
+
+                    <button type="button" class="face-btn" data-value="10" title="10 - Worst Pain">
+                        <svg viewBox="0 0 100 100" class="face-svg">
+                            <circle cx="50" cy="50" r="45" class="face-outline" />
+                            <path d="M 24 26 Q 35 18 44 26" class="brow" />
+                            <path d="M 56 26 Q 65 18 76 26" class="brow" />
+                            <circle cx="35" cy="40" r="4.5" class="eye" />
+                            <circle cx="65" cy="40" r="4.5" class="eye" />
+                            <circle cx="32" cy="53" r="2.5" class="tear" />
+                            <circle cx="68" cy="53" r="2.5" class="tear" />
+                            <path d="M 38 74 Q 50 70 62 74" class="mouth" />
+                        </svg>
+                        <span class="face-label">10</span>
+                    </button>
+
+                </div>
+                <input type="hidden" name="FacePainScore" id="adultFacePainScore" />
+            </div>
+
+            @* <h3>Pain Score</h3> *@
+            <div>
+                <label><input type="radio" name="PainScore" value="Mild" /> MILD: 0–3</label>
+            </div>
+            <div>
+                <label><input type="radio" name="PainScore" value="Moderate" /> MODERATE: 4–6</label>
+            </div>
+            <div>
+                <label><input type="radio" name="PainScore" value="Severe" /> SEVERE: 7–10</label>
+            </div>
+        </div>
+
+        <div class="triage-early-warning-signs">
+            @* <h3>Triage Early Warning Signs (TEWS)</h3> *@
+            <div class="tews-table-div">
+                <table class="tews-table">
+                    <thead>
+                        <tr><th colspan="3">Adult TEWS (Over 12 Years)</th></tr>
+                        <tr>
+                            <th>Particulars</th>
+                            <th>Recorded Value</th>
+                            <th>Score <span class="hint">(auto)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Mobility</td>
+                            <td>
+                                <select name="Mobility" id="adultMobility">
+                                    <option value="">-- Select --</option>
+                                    <option value="Walking">Walking</option>
+                                    <option value="With help">With help</option>
+                                    <option value="Stretcher/Immobile">Stretcher / Immobile</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="MobilityScore" id="adultMobilityScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Respiratory Rate <span class="hint">(breaths/min)</span></td>
+                            <td>
+                                <input type="number" name="TewsRespiratoryRate" id="adultRespRate"
+                                       min="0" max="60" placeholder="e.g. 16" />
+                            </td>
+                            <td>
+                                <input type="number" name="RespiratoryRateScore" id="adultRespScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Pulse Rate <span class="hint">(beats/min)</span></td>
+                            <td>
+                                <input type="number" name="TewsPulseRate" id="adultPulseRate"
+                                       min="0" max="300" placeholder="e.g. 80" />
+                            </td>
+                            <td>
+                                <input type="number" name="PulseRateScore" id="adultPulseScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Temperature <span class="hint">(°C)</span></td>
+                            <td>
+                                <input type="number" name="TewsTemperature" id="adultTewsTemp"
+                                       step="0.1" min="25" max="45" placeholder="e.g. 37.0" />
+                            </td>
+                            <td>
+                                <input type="number" name="TemperatureScore" id="adultTempScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Systolic Blood Pressure <span class="hint">(mmHg)</span></td>
+                            <td>
+                                <input type="number" name="SystolicBloodPressure" id="adultSBP"
+                                       min="0" max="300" placeholder="e.g. 120" />
+                            </td>
+                            <td>
+                                <input type="number" name="SystolicBloodPressureScore" id="adultSBPScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>AVPU</td>
+                            <td>
+                                <select name="AVPU" id="adultAVPU">
+                                    <option value="">-- Select --</option>
+                                    <option value="Alert">Alert</option>
+                                    <option value="Confused">Confused</option>
+                                    <option value="React to voice">Reacts to voice</option>
+                                    <option value="React to pain">Reacts to pain</option>
+                                    <option value="Unresponsive">Unresponsive</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="AVPUScore" id="adultAVPUScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Trauma</td>
+                            <td>
+                                <select name="Trauma" id="adultTrauma">
+                                    <option value="">-- Select --</option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="TraumaScore" id="adultTraumaScore"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                        @* <tr class="tews-subtotal">
+                            <td><strong>SUB-TOTAL</strong></td>
+                            <td colspan="2">
+                                <input type="number" name="SubTotal" id="adultSubTotal"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr> *@
+
+                        <tr class="tews-total">
+                            <td><strong>Total TEWS Score</strong></td>
+                            <td colspan="2">
+                                <input type="number" name="TotalTews" id="adultTotalTews"
+                                       readonly placeholder="—" title="Auto-calculated" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="emergency-levels">
+            <h3>Note: a TEWS score above 7 indicates an emergency.</h3>
+            <p>From the SATS triage chart and/or TEWS calculation, mark the appropriate triage level below.</p>
+            <select name="TriageLevel">
+                <option value="">-- Select triage level --</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Very Urgent">Very Urgent</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Routine">Routine / Non-Urgent</option>
+            </select>
+        </div>
+
+        <br />
+        <button type="submit">Submit Triage Details</button>
+
+    </form>
+</div>

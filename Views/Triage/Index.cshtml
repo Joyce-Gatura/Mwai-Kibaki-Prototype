@@ -1,0 +1,54 @@
+@model TriageModel
+
+<link rel="stylesheet" href="~/css/triage.css" />
+
+
+<div class="triage-page">
+    <h2>Accident And Emergency Observation &amp; Triage Chart</h2>
+
+    <div class="emergency-quiz">
+        <h3>Is the patient presenting with emergency signs?</h3>
+        <p>Yes → Take straight to resuscitation area</p>
+        <p>No → Proceed to vital signs and TEWS calculation</p>
+    </div>
+
+    <div class="patient-category">
+        <fieldset>
+            @* <legend>Patient age category</legend> *@
+
+            <label>
+                <input type="radio" name="AgeCategory" value="adult" required />
+                Adult (over 12 yrs)
+            </label>
+
+            <label>
+                <input type="radio" name="AgeCategory" value="ochild" />
+                Older child (3-12 yrs)
+            </label>
+
+            <label>
+                <input type="radio" name="AgeCategory" value="ychild" />
+                Young child (0-3 yrs)
+            </label>
+
+        </fieldset>
+    </div>
+
+    <div id="forms-container">
+        <partial name="TriageForms/AdultForm" />
+        <partial name="TriageForms/OlderChild" />
+        <partial name="TriageForms/YoungChild" />
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/triage.js"></script>
+  
+    <script src="~/js/adultTews.js"></script>
+    <script src="~/js/olderChildTews.js"></script>
+    <script src="~/js/youngChildTews.js"></script>
+
+
+
+}
