@@ -1,0 +1,612 @@
+/* ═══════════════════════════════════════════════
+   TRIAGE — triage.css  (single file, all pages)
+   Targets actual class names used in the HTML.
+═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bdark:  #2F2e7C;
+    --bmid:   #4b55b3;
+    --blight: #6c77d4;
+    --bpale:  #eef0ff;
+    --brow:   #f3f4ff;
+    --bd:     #d1d4f1;
+    --tm:     #11183d;
+    --tmu:    #5d6497;
+    --error:  #c62828;
+    --purple: #6610f2;
+    --ppale:  #f0e6ff;
+    --pmid:   #7c3aed;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--blue-pale);
+    color: var(--tm);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ══════════════════════════════════
+   INDEX PAGE — triage-page
+══════════════════════════════════ */
+.triage-page {
+    max-width: 1200px;
+    margin: 28px auto;
+    padding: 0 16px 48px;
+    background: #fff;
+    border: 1px solid var(--bd);
+    box-shadow: 0 2px 16px rgba(21,101,192,0.09);
+ 
+}
+
+.triage-page > h2 {
+    background: var(--bdark);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 18px 24px;
+    margin: 0 0 0 0;
+}
+
+/* ── Emergency quiz ──────────────────────────── */
+.emergency-quiz {
+    padding: 16px 24px;
+    background: linear-gradient(135deg, rgba(47,46,124,0.07), rgba(47,46,124,0.02));
+    border-left: 5px solid var(--bdark);
+    border-bottom: 1px solid var(--bd);
+    margin: 0;
+}
+
+.emergency-quiz h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--tm);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+    border: none;
+
+
+
+}
+
+.emergency-quiz p {
+    font-size: 13px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.emergency-quiz p:first-of-type {
+    background: #ffebee;
+    border-left: 3px solid var(--error);
+    color: #7f0000;
+}
+
+.emergency-quiz p:last-of-type {
+    background: var(--bpale);
+    border-left: 3px solid var(--bmid);
+    color: var(--bdark);
+    margin-bottom: 0;
+}
+
+/* ── Age category ────────────────────────────── */
+.patient-category {
+
+    
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--bd);
+
+}
+
+.patient-category fieldset {
+    border: none;
+    padding: 0;
+}
+
+.patient-category legend {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--bmid);
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+.patient-category label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 2px solid var(--bd);
+    border-radius: 7px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tm);
+    margin: 0 10px 8px 0;
+    transition: all 0.2s ease;
+    min-width: 150px;
+}
+
+.patient-category label:hover {
+    border-color: var(--bmid);
+    background: var(--bpale);
+    box-shadow: 0 3px 10px rgba(75,85,179,0.12);
+}
+
+.patient-category label:has(input[type="radio"]:checked) {
+    background: var(--bmid);
+    border-color: var(--bdark);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(75,85,179,0.28);
+}
+
+.patient-category input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--bmid);
+    cursor: pointer;
+}
+
+/* ══════════════════════════════════
+   AGE FORM PANELS (all 3 partials)
+══════════════════════════════════ */
+.age-form {
+    background: #fff;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Form inner h2 / h3 ──────────────────────── */
+.age-form h2 {
+    background: var(--bmid);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 24px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-top: 1px solid var(--bd);
+    border-bottom: 1px solid var(--bd);
+}
+
+.age-form h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blight);
+    padding: 6px 14px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin: 0 0 14px 0;
+    display: inline-block;
+}
+
+/* ── Patient type ────────────────────────────── */
+.age-form > form > h3:first-child {
+    margin: 16px 24px 8px;
+}
+
+.age-form > form > select[name="PatientType"] {
+    display: block;
+    width: calc(100% - 48px);
+    max-width: 280px;
+    margin: 0 24px 16px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--bmid);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tm);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.age-form > form > select[name="PatientType"]:focus {
+    border-color: var(--bdark);
+    box-shadow: 0 0 0 3px rgba(75,85,179,0.18);
+}
+
+/* ── Vital signs grid ────────────────────────── */
+.patient-vital-signs {
+  
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 16px 24px 20px;
+    border-bottom: 1px solid var(--bd);
+    background: var(--brow);
+}
+
+.patient-vital-signs label {
+  
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--tmu);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    /* align-self: end; */
+    margin-top: 4px;
+}
+.patient-vital-signs input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--bd);
+    border-radius: 5px;
+    font-size: 13px;
+    color: var(--tm);
+    background: #fff;
+    transition: border-color 0.2s;
+}
+
+.patient-vital-signs input:focus {
+    outline: none;
+    border-color: var(--blight);
+    box-shadow: 0 0 0 3px rgba(75,85,179,0.15);
+}
+
+.patient-vital-signs input::placeholder { color: #b0bcd8; font-size: 12px; }
+
+.hint {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--tmu);
+    margin-left: 2px;
+}
+
+/* ── Pain rating scale ───────────────────────── */
+.pain-rating-scale {
+    /* padding: 20px 24px; */
+    border-bottom: 1px solid var(--bd);
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    /* justify-content: center; */
+}
+
+.section-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blight);
+    padding: 6px 14px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 14px;
+    display: inline-block;
+}
+
+/* ── Faces scale ─────────────────────────────── */
+.faces-scale {
+    display: flex;
+    gap: 8px;
+    /* justify-content: center; */
+    padding: 10px 0 16px;
+    flex-wrap: wrap;
+}
+
+.face-btn {
+    background: #fff;
+    border: 2px solid var(--bd);
+    border-radius: 8px;
+    flex: 1;
+    max-width: 105px;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px 6px 8px;
+    transition: all 0.2s ease;
+}
+
+.face-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(10,61,122,0.12);
+    border-color: var(--bmid);
+}
+
+.face-btn.selected {
+    background: var(--bmid);
+    border-color: var(--bdark);
+    box-shadow: 0 8px 20px rgba(10,61,122,0.2);
+}
+
+.face-svg  { width: 54px; height: 54px; display: block; }
+
+.face-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bdark);
+}
+
+.face-btn.selected .face-label { color: #fff; }
+
+/* SVG face element colours */
+.face-outline { fill: #fff; stroke: var(--bmid); stroke-width: 2.5; }
+.eye          { fill: var(--bmid); }
+.brow, .mouth { fill: none; stroke: var(--bmid); stroke-width: 2.5; stroke-linecap: round; }
+.tear         { fill: var(--bmid); }
+
+/* Invert SVG when selected */
+.face-btn.selected .face-outline { fill: var(--blight); stroke: #fff; }
+.face-btn.selected .eye          { fill: #fff; }
+.face-btn.selected .brow,
+.face-btn.selected .mouth        { stroke: #fff; }
+.face-btn.selected .tear         { fill: #fff; }
+
+/* ── Pain score radios ───────────────────────── */
+.pain-rating-scale > div {
+    margin: 4px 0;
+}
+
+.pain-rating-scale > div label {
+    display: inline-flex;
+    align-items: center; 
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1.5px solid var(--bd);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s;
+    width: 100%;
+    max-width: 300px; 
+}
+
+.pain-rating-scale > div label:hover {
+    background: var(--bpale);
+    border-color: var(--bmid);
+}
+
+.pain-rating-scale > div label:has(input[value="Mild"]) { color: #2e7d32; }
+.pain-rating-scale > div label:has(input[value="Moderate"]) { color: #e65100; }
+.pain-rating-scale > div label:has(input[value="Severe"]) { color: #b71c1c; }
+
+.pain-rating-scale > div label:has(input[value="Mild"]:checked)     { background: #e8f5e9; border-color: #2e7d32; }
+.pain-rating-scale > div label:has(input[value="Moderate"]:checked) { background: #fff3e0; border-color: #e65100; }
+.pain-rating-scale > div label:has(input[value="Severe"]:checked)   { background: #ffebee; border-color: #b71c1c; }
+
+.pain-rating-scale input[type="radio"] {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--bmid);
+}
+
+/* ── TEWS section ────────────────────────────── */
+.triage-early-warning-signs {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--bd);
+}
+
+.tews-table-div {
+    overflow-x: auto;
+    border: 1px solid var(--bd);
+}
+
+.tews-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.tews-table thead tr:first-child th {
+    background: var(--bdark);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 11px 14px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    border: 1px solid var(--bdark);
+}
+
+.tews-table thead tr:last-child th {
+    background: var(--bmid);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 8px 14px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--bmid);
+}
+
+.tews-table tbody tr:nth-child(even) { background: var(--brow); }
+.tews-table tbody tr:nth-child(odd)  { background: #fff; }
+.tews-table tbody tr:hover           { background: var(--bpale); }
+
+.tews-table td {
+    padding: 9px 14px;
+    border: 1px solid var(--bd);
+    vertical-align: middle;
+    color: var(--tm);
+}
+
+.tews-table td:first-child {
+    font-weight: 600;
+    color: var(--bdark);
+    white-space: nowrap;
+}
+
+.tews-table input[type="number"],
+.tews-table select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid var(--bd);
+    border-radius: 5px;
+    font-size: 13px;
+    color: var(--tm);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tews-table input[type="number"]:focus,
+.tews-table select:focus {
+    border-color: var(--blight);
+    box-shadow: 0 0 0 3px rgba(75,85,179,0.15);
+}
+
+.tews-table input[readonly] {
+    background: var(--bpale);
+    color: var(--bdark);
+    font-weight: 700;
+    text-align: center;
+    border-color: var(--bd);
+    cursor: not-allowed;
+}
+
+.tews-table input::placeholder { color: #b0bcd8; }
+
+/* ── SubTotal row ────────────────────────────── */
+/* .tews-subtotal td {
+    background: var(--ppale) !important;
+    border-top: 2px solid var(--purple);
+    font-weight: 700;
+}
+
+.tews-subtotal td:first-child { color: var(--purple); }
+
+.tews-subtotal input[readonly] {
+    background: #e0ccff;
+    color: var(--purple);
+    border-color: var(--purple);
+    font-size: 14px;
+    font-weight: 700;
+} */
+
+/* ── Total TEWS row ──────────────────────────── */
+.tews-total td {
+    background: var(--blight) !important;
+    font-weight: 700;
+}
+
+.tews-total td:first-child { color: #fff; }
+
+.tews-total input[readonly] {
+    color:var(--bdark);
+    border-color:var(--bdark);
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+}
+
+/* ── Emergency levels ────────────────────────── */
+.emergency-levels {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--bd);
+    background: linear-gradient(135deg, rgba(47,46,124,0.05), rgba(47,46,124,0.01));
+    border-left: 5px solid var(--bdark);
+}
+
+.emergency-levels h3 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bdark);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+    background: none;
+    padding: 0;
+    display: block;
+    border-radius: 0;
+}
+
+.emergency-levels p {
+    font-size: 12px;
+    color: var(--tmu);
+    margin-bottom: 10px;
+}
+
+.emergency-levels select,
+select[name="TriageLevel"] {
+    width: 100%;
+    max-width: 320px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--bmid);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tm);
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.emergency-levels select:focus,
+select[name="TriageLevel"]:focus {
+    border-color: var(--bdark);
+    box-shadow: 0 0 0 3px rgba(75,85,179,0.18);
+}
+
+/* ── Submit button ───────────────────────────── */
+.age-form form > br + button,
+button[type="submit"] {
+    display: block;
+    margin: 20px 24px;
+    padding: 10px 32px;
+    background: var(--bmid);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.25s ease;
+}
+
+button[type="submit"]:hover {
+    background: var(--bdark);
+    box-shadow: 0 4px 12px rgba(10,61,122,0.3);
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+    .patient-vital-signs { grid-template-columns: 1fr 1fr; }
+    .patient-category label { min-width: unset; display: flex; width: 100%; margin-right: 0; }
+    .faces-scale { justify-content: center; }
+    .face-btn { max-width: 80px; }
+}
+
+@media (max-width: 480px) {
+    .patient-vital-signs { grid-template-columns: 1fr; }
+    .triage-page > h2 { font-size: 13px; padding: 14px 16px; }
+    .tews-table td:first-child { white-space: normal; }
+}
